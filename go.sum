@@ -1,0 +1,6 @@
+github.com/MoraGames/terminal v0.0.0-20220103020759-6a1c9a408865 h1:T26U+gsNlQ225ia+v/VWBKGWQWVM/wiLIy2gT887tow=
+github.com/MoraGames/terminal v0.0.0-20220103020759-6a1c9a408865/go.mod h1:O/WojO9+ArzwTyz1OkWQnnY8xFRG28Y3mFBvNjvHTWI=
+github.com/mattn/go-runewidth v0.0.9 h1:Lm995f3rfxdpd6TSmuVCHVb/QhupuXlYr8sCI/QdE+0=
+github.com/mattn/go-runewidth v0.0.9/go.mod h1:H031xJmbD/WCDINGzjvQ9THkh0rPKHF+m2gUSrubnMI=
+github.com/nsf/termbox-go v1.1.1 h1:nksUPLCb73Q++DwbYUBEglYBRPZyoXJdrj5L+TkjyZY=
+github.com/nsf/termbox-go v1.1.1/go.mod h1:T0cTdVuOwf7pHQNtfhnEbzHbcNyCEcVU4YPpouCbVxo=
