@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/MoraGames/terminal"
 	"github.com/nsf/termbox-go"
 )
 
@@ -12,48 +11,34 @@ func main(){
 	}
 	defer termbox.Close()
 
+	mainMenu()
+}
+
+const (
+	Arrow_Left IndicatorStyle = "->"
+	Arrow_Right IndicatorStyle = "<-"
+)
+
+func mainMenu() {
 	menu, err := NewMenu(
 		"-- Menù Principale -- ----------------------------",
-		"Utilizza i tasti freccia per orientarti nel menù.",
+		"Utilizza i tasti freccia per orientarti nel menù.\nPremi invio per selezionare.",
 		[]Option{"Nuova  Partita", "Classifica  Record", "Impostazioni", "Esci dal Gioco"},
-		Arrows,
+		SelectionStyle{Arrow_Left, Arrow_Right},
 		0,
 	)
 	if err != nil {
 		panic(err)
 	}
 
-	for exit := false; exit == false; {
-		menu.Print()
-		switch event := termbox.PollEvent(); event.Type {
-			case termbox.EventKey:
-				switch event.Key {
-					case termbox.KeyArrowLeft:
-						//fmt.Println("<-")
-					case termbox.KeyArrowDown:
-						menu.IncraseSelection()
-						//fmt.Println("\\/")
-					case termbox.KeyArrowRight:
-						//fmt.Println("->")
-					case termbox.KeyArrowUp:
-						menu.DecraseSelection()
-						//fmt.Println("/\\")
-					case termbox.KeyEsc:
-						//fmt.Println("Esc")
-						menu.SetSelection(3)
-					case termbox.KeyEnter:
-						if menu.GetSelection() == 3 {
-							exit = true
-						}
-					default:
-						//if event.Ch == 'r' {
-						//	fmt.Println("r")
-						//}
-					}
-			case termbox.EventError:
-				panic(event.Err)
-		}
+	switch menu.Handler() {
+		case 0:
+			//NewGame()
+		case 1:
+			//ShowRecords()
+		case 2:
+			//EditSettings()
+		case 3:
+			//Quit
 	}
-
-	terminal.Clear()
 }

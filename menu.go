@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/MoraGames/terminal"
+	"github.com/nsf/termbox-go"
 )
 
 type Option string
@@ -109,6 +110,28 @@ func (m Menu) Print() {
 	}
 
 	fmt.Println()
+}
+
+func (m Menu) Handler() int {
+	for exit := false; exit == false; {
+		m.Print()
+		switch event := termbox.PollEvent(); event.Type {
+		case termbox.EventKey:
+			switch event.Key {
+			case termbox.KeyArrowDown:
+				m.IncraseSelection()
+			case termbox.KeyArrowUp:
+				m.DecraseSelection()
+			case termbox.KeyEnter:
+				exit = true
+			}
+		case termbox.EventError:
+			panic(event.Err)
+		}
+	}
+	terminal.Clear()
+
+	return m.GetSelection()
 }
 
 /*
